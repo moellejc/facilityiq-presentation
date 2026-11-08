@@ -11,8 +11,8 @@
   const progressBar = document.querySelector("[data-progress]");
   const currentEls = Array.from(document.querySelectorAll("[data-slide-current]"));
   const totalEls = Array.from(document.querySelectorAll("[data-slide-total]"));
-  const prevBtn = document.querySelector("[data-prev]");
-  const nextBtn = document.querySelector("[data-next]");
+  const prevBtns = Array.from(document.querySelectorAll("[data-prev]"));
+  const nextBtns = Array.from(document.querySelectorAll("[data-next]"));
   const sectionLabel = document.querySelector("[data-section-label]");
   const overview = document.querySelector("[data-overview]");
   const overviewScrim = document.querySelector("[data-overview-scrim]");
@@ -140,8 +140,12 @@
       progressBar.style.width = `${pct}%`;
     }
 
-    if (prevBtn) prevBtn.disabled = index === 0;
-    if (nextBtn) nextBtn.disabled = index === total - 1;
+    prevBtns.forEach((btn) => {
+      btn.disabled = index === 0;
+    });
+    nextBtns.forEach((btn) => {
+      btn.disabled = index === total - 1;
+    });
 
     if (sectionLabel) {
       sectionLabel.textContent =
@@ -282,8 +286,8 @@
     }
   });
 
-  prevBtn?.addEventListener("click", prev);
-  nextBtn?.addEventListener("click", next);
+  prevBtns.forEach((btn) => btn.addEventListener("click", prev));
+  nextBtns.forEach((btn) => btn.addEventListener("click", next));
   overviewToggles.forEach((btn) => btn.addEventListener("click", toggleOverview));
   overviewScrim?.addEventListener("click", closeOverview);
 

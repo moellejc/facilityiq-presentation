@@ -330,10 +330,13 @@ body.is-overview-open .deck-controls {
   transform: translateY(calc(100% - 1.75rem));
   transition: transform var(--fiq-duration) var(--fiq-ease-out);
   padding: 0 0 var(--fiq-space-4);
+  /* Closed peek must not eat footer clicks; only the handle stays live */
+  pointer-events: none;
 }
 
 .overview.is-open {
   transform: translateY(0);
+  pointer-events: auto;
 }
 
 .overview__handle-row {
@@ -353,6 +356,7 @@ body.is-overview-open .deck-controls {
   cursor: pointer;
   color: var(--fiq-white-dim);
   padding: 0;
+  pointer-events: auto;
 }
 
 .overview__handle:hover .overview__grip,
