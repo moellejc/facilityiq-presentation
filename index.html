@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/presentation.css" />
     <link rel="stylesheet" href="css/slides.css" />
+    <link rel="stylesheet" href="css/diagrams.css" />
   </head>
   <body>
     <div class="deck-progress" aria-hidden="true">
@@ -25,7 +26,7 @@
         <span class="brand-mark__name">FacilityIQ</span>
       </a>
       <div class="deck-meta">
-        <span class="hint">Space / ← → to navigate</span>
+        <span class="hint">Space / ← → · Esc closes overview</span>
         <span class="slide-counter" aria-live="polite">
           <span class="slide-counter__current" data-slide-current>01</span>
           <span aria-hidden="true"> / </span>
@@ -36,8 +37,15 @@
 
     <main class="deck" data-deck tabindex="0" aria-label="FacilityIQ presentation">
       <div class="slides">
-        <!-- 01 Title -->
-        <section class="slide slide--hero is-active" data-slide id="title">
+        <!-- TEMPLATE: Title -->
+        <section
+          class="slide slide--hero tpl-title is-active"
+          data-slide
+          data-preview="Title"
+          data-section="Title"
+          id="title"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-title</span>
           <div class="slide__visual" aria-hidden="true">
             <div class="slide__visual-plane"></div>
           </div>
@@ -49,37 +57,59 @@
             Clarity for every facility
           </h1>
           <p class="lede lede--tight reveal reveal-delay-2">
-            An interactive deck template built in the SpaceX / x.ai dark visual language —
-            full-bleed scenes, spectral type, zero chrome noise.
+            Template deck — title, five content patterns, and a close page —
+            in the SpaceX / x.ai dark visual language.
           </p>
           <div class="cta-row reveal reveal-delay-3">
             <button class="btn" type="button" data-next>Begin briefing</button>
           </div>
         </section>
 
-        <!-- 02 Mission -->
-        <section class="slide slide--statement" data-slide id="mission">
-          <p class="eyebrow reveal">Mission</p>
-          <h2 class="headline headline--wide reveal reveal-delay-1">
-            Turn facility signal into decisive action
-          </h2>
-          <p class="lede reveal reveal-delay-2">
-            FacilityIQ unifies sensors, work orders, and operator context so teams see
-            what matters — before downtime arrives.
-          </p>
+        <!-- TEMPLATE 01: Simple text + bullets -->
+        <section
+          class="slide tpl-bullets"
+          data-slide
+          data-preview="Bullets"
+          data-section="Content · Bullets"
+          id="bullets"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-bullets · 01</span>
+          <div class="content-block">
+            <p class="eyebrow reveal">Template 01</p>
+            <h2 class="headline headline--wide reveal reveal-delay-1">
+              Simple text with bullet points
+            </h2>
+            <p class="lede reveal reveal-delay-2">
+              Use this layout for crisp talking points. One headline, a short lede,
+              then a hairline list — no cards.
+            </p>
+            <ul class="bullet-list">
+              <li>Lead with the outcome operators care about</li>
+              <li>Keep each line to a single actionable idea</li>
+              <li>Prefer specificity over slogans</li>
+              <li>Leave room for the speaker to expand</li>
+            </ul>
+          </div>
         </section>
 
-        <!-- 03 Problem -->
-        <section class="slide" data-slide id="problem">
+        <!-- TEMPLATE 02: Split narrative + feature list -->
+        <section
+          class="slide tpl-split"
+          data-slide
+          data-preview="Split"
+          data-section="Content · Split"
+          id="split"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-split · 02</span>
           <div class="slide__grid slide__grid--split">
             <div>
-              <p class="eyebrow reveal">The gap</p>
+              <p class="eyebrow reveal">Template 02</p>
               <h2 class="headline reveal reveal-delay-1">
-                Data everywhere. Decisions nowhere.
+                Narrative beside a structured list
               </h2>
               <p class="lede reveal reveal-delay-2">
-                Critical facilities drown in telemetry while operators chase alerts across
-                disconnected tools. The cost is latency — and risk.
+                Two-column composition for framing a problem or capability set
+                without turning the page into a dashboard.
               </p>
             </div>
             <ol class="feature-list reveal reveal-delay-3">
@@ -114,15 +144,22 @@
           </div>
         </section>
 
-        <!-- 04 Product -->
-        <section class="slide" data-slide id="product">
-          <p class="eyebrow reveal">Product</p>
+        <!-- TEMPLATE 03: Metrics -->
+        <section
+          class="slide tpl-metrics"
+          data-slide
+          data-preview="Metrics"
+          data-section="Content · Metrics"
+          id="metrics"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-metrics · 03</span>
+          <p class="eyebrow reveal">Template 03</p>
           <h2 class="headline reveal reveal-delay-1">
-            One intelligence layer for the built environment
+            Headline with proof metrics
           </h2>
           <p class="lede reveal reveal-delay-2">
-            FacilityIQ sits above your stack — correlating events, ranking risk, and
-            routing the next best action to the right operator.
+            Mid-deck evidence strip. Never place metrics in the title viewport —
+            they belong here, after the story is set.
           </p>
           <div class="metric-row reveal reveal-delay-3">
             <div>
@@ -140,72 +177,149 @@
           </div>
         </section>
 
-        <!-- 05 Capabilities -->
-        <section class="slide" data-slide id="capabilities">
-          <div class="slide__grid slide__grid--split">
+        <!-- TEMPLATE 04: Animated process flow -->
+        <section
+          class="slide tpl-flow"
+          data-slide
+          data-preview="Flow"
+          data-section="Content · Flow"
+          id="flow"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-flow · 04</span>
+          <div class="slide__grid slide__grid--diagram">
             <div>
-              <p class="eyebrow reveal">Capabilities</p>
+              <p class="eyebrow reveal">Template 04</p>
               <h2 class="headline reveal reveal-delay-1">
-                Built for the control room
+                Animated process flow
               </h2>
               <p class="lede reveal reveal-delay-2">
-                Designed for operators who need speed under pressure — not another
-                dashboard to babysit.
+                Sequential steps with drawing connectors and pulse nodes —
+                ideal for “how it works” briefings.
               </p>
             </div>
-            <ol class="feature-list reveal reveal-delay-3">
-              <li>
-                <span class="feature-list__index">01</span>
-                <div>
-                  <h3 class="feature-list__title">Unified telemetry</h3>
-                  <p class="feature-list__body">
-                    Normalize feeds from equipment, spaces, and workflows into a live model.
-                  </p>
-                </div>
+            <ol class="flow" aria-label="FacilityIQ operating loop">
+              <li class="flow__step">
+                <span class="flow__index">01</span>
+                <h3 class="flow__title">Sense</h3>
+                <p class="flow__body">Ingest telemetry across equipment and spaces.</p>
               </li>
-              <li>
-                <span class="feature-list__index">02</span>
-                <div>
-                  <h3 class="feature-list__title">Risk ranking</h3>
-                  <p class="feature-list__body">
-                    Prioritize by impact on uptime, safety, and cost — not raw volume.
-                  </p>
-                </div>
+              <li class="flow__step">
+                <span class="flow__index">02</span>
+                <h3 class="flow__title">Correlate</h3>
+                <p class="flow__body">Join events into a live facility model.</p>
               </li>
-              <li>
-                <span class="feature-list__index">03</span>
-                <div>
-                  <h3 class="feature-list__title">Action routing</h3>
-                  <p class="feature-list__body">
-                    Push playbooks and work orders with the context already attached.
-                  </p>
-                </div>
+              <li class="flow__step">
+                <span class="flow__index">03</span>
+                <h3 class="flow__title">Rank</h3>
+                <p class="flow__body">Score risk by uptime, safety, and cost.</p>
+              </li>
+              <li class="flow__step">
+                <span class="flow__index">04</span>
+                <h3 class="flow__title">Route</h3>
+                <p class="flow__body">Push the next action with context attached.</p>
               </li>
             </ol>
           </div>
         </section>
 
-        <!-- 06 Closing -->
-        <section class="slide slide--close" data-slide id="close">
-          <p class="eyebrow reveal">Next</p>
-          <h2 class="headline reveal reveal-delay-1">
-            Ready when the floor goes live
-          </h2>
+        <!-- TEMPLATE 05: Complex animated system diagram -->
+        <section
+          class="slide tpl-system"
+          data-slide
+          data-preview="System"
+          data-section="Content · System"
+          id="system"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-system · 05</span>
+          <div class="slide__grid slide__grid--diagram">
+            <div>
+              <p class="eyebrow reveal">Template 05</p>
+              <h2 class="headline reveal reveal-delay-1">
+                System diagram with motion
+              </h2>
+              <p class="lede reveal reveal-delay-2">
+                Complex visual: orbital nodes, dashed signal beams, and a traveling
+                packet around the FacilityIQ hub.
+              </p>
+            </div>
+            <div class="system" aria-label="FacilityIQ system diagram" role="img">
+              <div class="system__ring system__ring--outer" aria-hidden="true"></div>
+              <div class="system__ring system__ring--mid" aria-hidden="true"></div>
+              <svg class="system__beams" viewBox="0 0 100 100" aria-hidden="true">
+                <line class="system__beam" x1="50" y1="50" x2="50" y2="12" />
+                <line class="system__beam" x1="50" y1="50" x2="88" y2="50" />
+                <line class="system__beam" x1="50" y1="50" x2="50" y2="88" />
+                <line class="system__beam" x1="50" y1="50" x2="12" y2="50" />
+              </svg>
+              <div class="system__packet" aria-hidden="true"></div>
+              <div class="system__hub">
+                <span class="system__hub-label">Facility<br />IQ</span>
+              </div>
+              <div class="system__node system__node--n">
+                <div class="system__node-dot" aria-hidden="true"></div>
+                <span class="system__node-label">Sensors</span>
+              </div>
+              <div class="system__node system__node--e">
+                <div class="system__node-dot" aria-hidden="true"></div>
+                <span class="system__node-label">CMMS</span>
+              </div>
+              <div class="system__node system__node--s">
+                <div class="system__node-dot" aria-hidden="true"></div>
+                <span class="system__node-label">Operators</span>
+              </div>
+              <div class="system__node system__node--w">
+                <div class="system__node-dot" aria-hidden="true"></div>
+                <span class="system__node-label">BMS</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TEMPLATE: Close / Thank You -->
+        <section
+          class="slide tpl-thanks slide--close"
+          data-slide
+          data-preview="Thank You"
+          data-section="Close"
+          id="thanks"
+        >
+          <span class="tpl-badge" aria-hidden="true">tpl-thanks</span>
+          <div class="slide__visual" aria-hidden="true">
+            <div class="slide__visual-plane"></div>
+          </div>
+          <p class="thanks-mark reveal">FacilityIQ</p>
+          <h2 class="headline reveal reveal-delay-1">Thank you</h2>
           <p class="lede reveal reveal-delay-2">
-            Duplicate this template, swap copy, and keep the visual system intact.
-            Every slide is a full-viewport scene — no cards, no clutter.
+            Questions, pilots, and next briefings — we’re ready when the floor goes live.
           </p>
-          <p class="mono-line reveal reveal-delay-3">facilityiq · presentation system · v0.1</p>
+          <div class="contact-line reveal reveal-delay-3">
+            <a href="mailto:hello@facilityiq.example">hello@facilityiq.example</a>
+            <span aria-hidden="true">·</span>
+            <span>Pull up for slide overview</span>
+          </div>
+          <p class="mono-line reveal reveal-delay-4">facilityiq · presentation system · v0.2</p>
         </section>
       </div>
     </main>
 
     <footer class="deck-controls">
-      <span class="section-label" data-section-label>Briefing</span>
+      <span class="section-label" data-section-label>Title</span>
       <div class="nav-cluster">
         <button class="btn btn--icon" type="button" data-prev aria-label="Previous slide" disabled>
           <svg viewBox="0 0 16 16" aria-hidden="true">
             <path d="M10 3L5 8l5 5" />
+          </svg>
+        </button>
+        <button
+          class="btn btn--icon"
+          type="button"
+          data-overview-toggle
+          aria-label="Open slide overview"
+          aria-expanded="false"
+          aria-controls="slide-overview"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2 4.5h12M2 8h12M2 11.5h12" />
           </svg>
         </button>
         <button class="btn btn--icon" type="button" data-next aria-label="Next slide">
@@ -215,6 +329,36 @@
         </button>
       </div>
     </footer>
+
+    <!-- Slide overview drawer -->
+    <div class="overview-scrim" data-overview-scrim hidden></div>
+    <aside
+      id="slide-overview"
+      class="overview"
+      data-overview
+      aria-label="Slide overview"
+      aria-hidden="true"
+    >
+      <div class="overview__handle-row">
+        <button
+          class="overview__handle"
+          type="button"
+          data-overview-toggle
+          aria-label="Toggle slide overview"
+        >
+          <span class="overview__grip" aria-hidden="true"></span>
+        </button>
+      </div>
+      <div class="overview__header">
+        <span class="overview__title">Slides</span>
+        <span class="overview__meta">
+          <span data-slide-current>01</span>
+          <span aria-hidden="true"> / </span>
+          <span data-slide-total>00</span>
+        </span>
+      </div>
+      <div class="overview__track" data-overview-track role="list"></div>
+    </aside>
 
     <script src="js/presentation.js"></script>
   </body>

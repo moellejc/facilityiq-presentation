@@ -25,38 +25,47 @@ Defined in `css/tokens.css`:
 | `--fiq-font-display` / `--fiq-font-body` | DIN-like stack (Barlow Condensed + Barlow) |
 | `--fiq-radius-cta` (`4px`) | Primary button radius |
 
-## Type scale
+## Page templates
 
-- **Hero / display** — uppercase, condensed, tight leading, light tracking
-- **Eyebrow / caption** — small caps tracking (~0.08em)
-- **Body / lede** — sentence case, muted spectral white
-- **Mono** — slide indices, system footers
+| Class | Role |
+| --- | --- |
+| `.tpl-title` | Title / opening — brand lockup, hero headline, CTA |
+| `.tpl-bullets` | Simple text + hairline bullet list |
+| `.tpl-split` | Two-column narrative + numbered feature list |
+| `.tpl-metrics` | Headline + mid-deck metric strip |
+| `.tpl-flow` | Animated process flow (connectors + pulse nodes) |
+| `.tpl-system` | Complex orbital system diagram with motion |
+| `.tpl-thanks` | Close / thank-you with contact line |
+
+Mark each slide with `data-slide`, `data-preview` (overview label), and `data-section` (footer label).
+
+## Slide overview drawer
+
+Bottom pull-up panel for jumping between slides:
+
+- Peek handle at the bottom center, or the overview button in the footer nav
+- Horizontal strip of numbered previews (index + title — not screenshot cards)
+- Click a preview → `goTo(index)` + close drawer
+- `o` toggles · `Esc` closes · swipe up from bottom opens · swipe down closes
+- Scrim dim behind the panel
 
 ## Motion
 
 - Slide enter/exit: soft vertical drift (~420–700ms, ease-out)
 - Staggered `.reveal` children on the active slide
-- Hero orbital pulse (subtle scale/opacity) — disable under `prefers-reduced-motion`
-
-## Slide templates
-
-| Class | Use |
-| --- | --- |
-| `.slide--hero` | Title with brand lockup + full-bleed visual plane |
-| `.slide--statement` | Mission / thesis — headline + lede |
-| `.slide` + `.slide__grid--split` | Problem / capabilities two-column |
-| `.slide--close` | Closing / next steps |
+- Flow / system diagrams animate only while `.slide.is-active`
+- Respect `prefers-reduced-motion`
 
 ## Do / Don't
 
 **Do**
 
-- Keep the first viewport: brand, one headline, one lede, one CTA group, one visual plane
-- Use uppercase sparingly for display and labels; keep body readable
-- Extend via tokens first, then components
+- Keep the title viewport: brand, one headline, one lede, one CTA group, one visual plane
+- Extend via tokens first, then template classes
+- Use `data-preview` so the overview stays accurate
 
 **Don't**
 
 - Purple gradients, glow stacks, pill clusters, or dashboard chrome in the hero
 - Cards in the hero or as default content containers
-- Flat single-color pages with no atmospheric depth
+- Metrics or secondary content in the first viewport

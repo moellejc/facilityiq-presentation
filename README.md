@@ -4,15 +4,9 @@ Interactive HTML presentation system for FacilityIQ. Visual theme follows a Spac
 
 ## Quick start
 
-Open locally:
-
 ```bash
 open index.html
-```
-
-Or serve (recommended for font loading):
-
-```bash
+# or
 python3 -m http.server 5173
 # → http://localhost:5173
 ```
@@ -24,34 +18,49 @@ python3 -m http.server 5173
 | `→` `↓` `Space` `Enter` | Next slide |
 | `←` `↑` `Backspace` | Previous slide |
 | `Home` / `End` | First / last |
-| Swipe | Next / previous |
-| Buttons | Previous / next |
+| `o` | Toggle slide overview |
+| `Esc` | Close overview |
+| Swipe left / right | Next / previous |
+| Swipe up from bottom | Open overview |
+| Overview handle / list button | Open overview |
+| Click a preview | Jump to that slide |
 
-Deep links use hash IDs: `#title`, `#mission`, `#problem`, …
+Deep links use hash IDs: `#title`, `#bullets`, `#system`, …
+
+## Page templates
+
+The example deck demonstrates every template:
+
+| Slide | Template | Purpose |
+| --- | --- | --- |
+| Title | `.tpl-title` | Brand + hero |
+| Bullets | `.tpl-bullets` | Simple text + bullets |
+| Split | `.tpl-split` | Narrative + feature list |
+| Metrics | `.tpl-metrics` | Headline + metrics |
+| Flow | `.tpl-flow` | Animated process steps |
+| System | `.tpl-system` | Complex animated diagram |
+| Thank you | `.tpl-thanks` | Close |
 
 ## Structure
 
 ```
-├── index.html              # Example briefing deck
+├── index.html              # Template showcase deck
 ├── DESIGN.md               # Visual system
 ├── css/
-│   ├── fonts.css           # Web font loads
-│   ├── tokens.css          # Design tokens
-│   ├── presentation.css    # Deck chrome & navigation
-│   └── slides.css          # Slide layouts
+│   ├── fonts.css
+│   ├── tokens.css
+│   ├── presentation.css    # Chrome + overview drawer
+│   ├── slides.css          # Page templates
+│   └── diagrams.css        # Flow + system motion
 ├── js/
-│   └── presentation.js     # Navigation engine
-├── assets/                 # Images / media
-└── slides/                 # Optional modular slide content
+│   └── presentation.js     # Navigation + overview
+├── assets/
+└── slides/
 ```
 
 ## Extending
 
-1. Duplicate a `<section class="slide" data-slide>` in `index.html`.
-2. Give it a unique `id` for hash navigation.
-3. Prefer existing templates (`.slide--hero`, `.slide--statement`, `.slide--close`) and tokens from `css/tokens.css`.
-4. See [DESIGN.md](./DESIGN.md) before inventing new UI patterns.
-
-## Example deck
-
-The included briefing covers title → mission → problem → product → capabilities → close. Replace copy for your audience; keep the composition rules.
+1. Duplicate a `<section class="slide …" data-slide>` in `index.html`.
+2. Assign a template class (`tpl-bullets`, `tpl-flow`, …).
+3. Set `id`, `data-preview`, and `data-section`.
+4. Prefer tokens and existing components — see [DESIGN.md](./DESIGN.md).

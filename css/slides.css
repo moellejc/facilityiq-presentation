@@ -1,5 +1,14 @@
 /**
- * Slide layouts & typography templates
+ * Slide layouts & page templates
+ *
+ * Templates:
+ *   .tpl-title     Title / opening
+ *   .tpl-bullets   Simple text + bullets
+ *   .tpl-split     Two-column narrative + list
+ *   .tpl-metrics   Headline + metric strip
+ *   .tpl-flow      Process flow (animated)
+ *   .tpl-system    System diagram (complex animated)
+ *   .tpl-thanks    Close / thank you
  */
 
 .eyebrow {
@@ -158,7 +167,53 @@
   max-width: 18ch;
 }
 
-/* Feature list (not cards — labeled rows) */
+/* ── tpl-bullets: simple text + bullets ────────────────────── */
+
+.tpl-bullets .content-block {
+  width: min(100%, 40rem);
+}
+
+.bullet-list {
+  list-style: none;
+  margin: var(--fiq-space-6) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--fiq-stroke-soft);
+}
+
+.bullet-list li {
+  position: relative;
+  padding: var(--fiq-space-4) 0 var(--fiq-space-4) 1.5rem;
+  border-bottom: 1px solid var(--fiq-stroke-soft);
+  color: var(--fiq-white-muted);
+  font-size: var(--fiq-text-lead);
+  line-height: 1.45;
+}
+
+.bullet-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.35rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid var(--fiq-white-dim);
+  border-radius: 50%;
+}
+
+.slide.is-active .bullet-list li {
+  animation: reveal-up var(--fiq-duration-slow) var(--fiq-ease-out) both;
+}
+
+.slide.is-active .bullet-list li:nth-child(1) { animation-delay: 180ms; }
+.slide.is-active .bullet-list li:nth-child(2) { animation-delay: 260ms; }
+.slide.is-active .bullet-list li:nth-child(3) { animation-delay: 340ms; }
+.slide.is-active .bullet-list li:nth-child(4) { animation-delay: 420ms; }
+.slide.is-active .bullet-list li:nth-child(5) { animation-delay: 500ms; }
+
+/* Feature list (not cards — labeled rows) — used by tpl-split */
 .feature-list {
   list-style: none;
   margin: 0;
@@ -230,9 +285,82 @@
   color: var(--fiq-white-dim);
 }
 
-/* Quote / closing */
+/* ── tpl-flow / tpl-system: copy column beside diagram ─────── */
+
+.tpl-flow .slide__grid--diagram,
+.tpl-system .slide__grid--diagram {
+  width: min(100%, 72rem);
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .tpl-flow .slide__grid--diagram {
+    grid-template-columns: 0.85fr 1.15fr;
+  }
+
+  .tpl-system .slide__grid--diagram {
+    grid-template-columns: 0.9fr 1.1fr;
+  }
+}
+
+.tpl-flow .headline,
+.tpl-system .headline {
+  max-width: 14ch;
+}
+
+/* ── tpl-thanks: close / thank you ─────────────────────────── */
+
+.tpl-thanks,
+.slide--close {
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.tpl-thanks .headline,
 .slide--close .headline {
   max-width: 16ch;
+}
+
+.tpl-thanks .slide__visual,
+.slide--close .slide__visual {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  opacity: 0.85;
+}
+
+.thanks-mark {
+  margin-bottom: var(--fiq-space-5);
+  font-family: var(--fiq-font-display);
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  color: var(--fiq-white-dim);
+}
+
+.contact-line {
+  margin-top: var(--fiq-space-7);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fiq-space-5);
+  font-size: var(--fiq-text-caption);
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  color: var(--fiq-white-muted);
+}
+
+.contact-line a {
+  color: var(--fiq-white);
+  text-decoration: none;
+  border-bottom: 1px solid var(--fiq-stroke);
+  padding-bottom: 2px;
+  transition: border-color var(--fiq-duration-fast) var(--fiq-ease-out);
+}
+
+.contact-line a:hover {
+  border-color: var(--fiq-white);
 }
 
 .mono-line {
@@ -242,6 +370,20 @@
   letter-spacing: 0.04em;
   color: var(--fiq-white-dim);
   text-transform: uppercase;
+}
+
+/* Template badge (dev chrome — optional) */
+.tpl-badge {
+  position: absolute;
+  top: calc(var(--fiq-chrome-h) + var(--fiq-space-3));
+  right: var(--fiq-pad-slide);
+  font-family: var(--fiq-font-mono);
+  font-size: var(--fiq-text-micro);
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  color: var(--fiq-white-dim);
+  opacity: 0.55;
+  pointer-events: none;
 }
 
 /* Reveal children on active slide */
@@ -266,7 +408,8 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .slide.is-active .reveal {
+  .slide.is-active .reveal,
+  .slide.is-active .bullet-list li {
     animation: none;
   }
 }

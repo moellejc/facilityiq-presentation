@@ -1,0 +1,378 @@
+/**
+ * Animated diagrams for content templates 04–05
+ * Motion runs only while the parent slide is `.is-active`
+ */
+
+/* ── Process flow (template: flow) ─────────────────────────── */
+
+.flow {
+  --flow-node: 4.5rem;
+  list-style: none;
+  margin: var(--fiq-space-7) 0 0;
+  padding: 0;
+  display: grid;
+  gap: var(--fiq-space-4);
+  width: min(100%, 52rem);
+}
+
+@media (min-width: 800px) {
+  .flow {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    align-items: start;
+  }
+}
+
+.flow__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--fiq-space-3);
+  padding-right: var(--fiq-space-4);
+}
+
+.flow__index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--flow-node);
+  height: var(--flow-node);
+  border: 1px solid var(--fiq-stroke);
+  border-radius: 50%;
+  font-family: var(--fiq-font-mono);
+  font-size: var(--fiq-text-caption);
+  letter-spacing: var(--fiq-tracking-label);
+  color: var(--fiq-white);
+  background: rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 1;
+}
+
+.flow__title {
+  margin: 0;
+  font-size: var(--fiq-text-nav);
+  font-weight: 700;
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+}
+
+.flow__body {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--fiq-white-muted);
+  max-width: 14rem;
+}
+
+/* Connector line between steps */
+.flow__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: calc(var(--flow-node) / 2);
+  top: var(--flow-node);
+  width: 1px;
+  height: calc(100% - var(--flow-node) + var(--fiq-space-4));
+  background: var(--fiq-stroke-soft);
+  transform-origin: top center;
+}
+
+@media (min-width: 800px) {
+  .flow__step:not(:last-child)::after {
+    left: var(--flow-node);
+    top: calc(var(--flow-node) / 2);
+    width: calc(100% - var(--flow-node));
+    height: 1px;
+    transform-origin: left center;
+  }
+}
+
+.slide.is-active .flow__step {
+  animation: reveal-up var(--fiq-duration-slow) var(--fiq-ease-out) both;
+}
+
+.slide.is-active .flow__step:nth-child(1) { animation-delay: 120ms; }
+.slide.is-active .flow__step:nth-child(2) { animation-delay: 240ms; }
+.slide.is-active .flow__step:nth-child(3) { animation-delay: 360ms; }
+.slide.is-active .flow__step:nth-child(4) { animation-delay: 480ms; }
+
+.slide.is-active .flow__step:not(:last-child)::after {
+  animation: flow-draw 700ms var(--fiq-ease-out) both;
+}
+
+.slide.is-active .flow__step:nth-child(1)::after { animation-delay: 280ms; }
+.slide.is-active .flow__step:nth-child(2)::after { animation-delay: 400ms; }
+.slide.is-active .flow__step:nth-child(3)::after { animation-delay: 520ms; }
+
+.slide.is-active .flow__index {
+  animation: flow-node-pulse 2.8s var(--fiq-ease-in-out) infinite;
+}
+
+.slide.is-active .flow__step:nth-child(1) .flow__index { animation-delay: 0.4s; }
+.slide.is-active .flow__step:nth-child(2) .flow__index { animation-delay: 0.9s; }
+.slide.is-active .flow__step:nth-child(3) .flow__index { animation-delay: 1.4s; }
+.slide.is-active .flow__step:nth-child(4) .flow__index { animation-delay: 1.9s; }
+
+@keyframes flow-draw {
+  from { transform: scaleX(0); opacity: 0.2; }
+  to { transform: scaleX(1); opacity: 1; }
+}
+
+@media (max-width: 799px) {
+  @keyframes flow-draw {
+    from { transform: scaleY(0); opacity: 0.2; }
+    to { transform: scaleY(1); opacity: 1; }
+  }
+}
+
+@keyframes flow-node-pulse {
+  0%,
+  100% {
+    border-color: var(--fiq-stroke);
+    box-shadow: 0 0 0 0 transparent;
+  }
+  40% {
+    border-color: var(--fiq-white);
+    box-shadow: 0 0 0 6px rgba(240, 240, 250, 0.06);
+  }
+}
+
+/* ── System diagram (template: system) ─────────────────────── */
+
+.system {
+  position: relative;
+  width: min(100%, 34rem);
+  aspect-ratio: 1;
+  margin: 0 auto;
+  max-height: min(58vh, 34rem);
+}
+
+.system__ring {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid var(--fiq-stroke-soft);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.system__ring--outer {
+  inset: 2%;
+  opacity: 0.55;
+}
+
+.system__ring--mid {
+  inset: 22%;
+}
+
+.slide.is-active .system__ring--outer {
+  animation: system-spin 48s linear infinite;
+  border-style: dashed;
+}
+
+.slide.is-active .system__ring--mid {
+  animation: system-spin-rev 36s linear infinite;
+}
+
+.system__hub {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  translate: -50% -50%;
+  width: 7.5rem;
+  height: 7.5rem;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  border: 1px solid var(--fiq-stroke);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: 2;
+}
+
+.system__hub-label {
+  font-family: var(--fiq-font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.slide.is-active .system__hub {
+  animation: hub-glow 3.2s var(--fiq-ease-in-out) infinite;
+}
+
+.system__node {
+  position: absolute;
+  width: 5.75rem;
+  text-align: center;
+  z-index: 2;
+  translate: -50% -50%;
+}
+
+.system__node-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  margin: 0 auto var(--fiq-space-2);
+  border-radius: 50%;
+  background: var(--fiq-white);
+  box-shadow: 0 0 0 4px rgba(240, 240, 250, 0.08);
+}
+
+.system__node-label {
+  font-size: var(--fiq-text-micro);
+  font-weight: 700;
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  color: var(--fiq-white-muted);
+}
+
+/* Orbital positions */
+.system__node--n { left: 50%; top: 8%; }
+.system__node--e { left: 92%; top: 50%; }
+.system__node--s { left: 50%; top: 92%; }
+.system__node--w { left: 8%; top: 50%; }
+
+/* Beam lines from hub to nodes (SVG overlay) */
+.system__beams {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.system__beam {
+  fill: none;
+  stroke: rgba(240, 240, 250, 0.28);
+  stroke-width: 1;
+  stroke-dasharray: 4 6;
+}
+
+.slide.is-active .system__beam {
+  animation: beam-dash 1.6s linear infinite;
+}
+
+.slide.is-active .system__beam:nth-child(2) { animation-delay: 0.2s; }
+.slide.is-active .system__beam:nth-child(3) { animation-delay: 0.4s; }
+.slide.is-active .system__beam:nth-child(4) { animation-delay: 0.6s; }
+
+.slide.is-active .system__node {
+  animation: reveal-up var(--fiq-duration-slow) var(--fiq-ease-out) both;
+}
+
+.slide.is-active .system__node--n { animation-delay: 160ms; }
+.slide.is-active .system__node--e { animation-delay: 260ms; }
+.slide.is-active .system__node--s { animation-delay: 360ms; }
+.slide.is-active .system__node--w { animation-delay: 460ms; }
+
+.slide.is-active .system__node-dot {
+  animation: node-blink 2.4s var(--fiq-ease-in-out) infinite;
+}
+
+.slide.is-active .system__node--e .system__node-dot { animation-delay: 0.4s; }
+.slide.is-active .system__node--s .system__node-dot { animation-delay: 0.8s; }
+.slide.is-active .system__node--w .system__node-dot { animation-delay: 1.2s; }
+
+/* Signal packet traveling along mid ring */
+.system__packet {
+  position: absolute;
+  left: 50%;
+  top: 22%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  margin-top: -3px;
+  border-radius: 50%;
+  background: var(--fiq-white);
+  opacity: 0;
+  z-index: 3;
+  offset-path: path("M 0,0");
+}
+
+.slide.is-active .system__packet {
+  opacity: 1;
+  animation: packet-orbit 6s linear infinite;
+}
+
+@keyframes system-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes system-spin-rev {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes hub-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+    border-color: var(--fiq-stroke);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(200, 220, 240, 0.12);
+    border-color: rgba(240, 240, 250, 0.55);
+  }
+}
+
+@keyframes beam-dash {
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes node-blink {
+  0%,
+  100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+}
+
+@keyframes packet-orbit {
+  0% {
+    left: 50%;
+    top: 22%;
+    opacity: 0;
+  }
+  8% { opacity: 1; }
+  25% {
+    left: 78%;
+    top: 50%;
+  }
+  50% {
+    left: 50%;
+    top: 78%;
+  }
+  75% {
+    left: 22%;
+    top: 50%;
+  }
+  92% { opacity: 1; }
+  100% {
+    left: 50%;
+    top: 22%;
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide.is-active .flow__step,
+  .slide.is-active .flow__step:not(:last-child)::after,
+  .slide.is-active .flow__index,
+  .slide.is-active .system__ring--outer,
+  .slide.is-active .system__ring--mid,
+  .slide.is-active .system__hub,
+  .slide.is-active .system__beam,
+  .slide.is-active .system__node,
+  .slide.is-active .system__node-dot,
+  .slide.is-active .system__packet {
+    animation: none !important;
+  }
+
+  .system__packet {
+    display: none;
+  }
+}
