@@ -1,0 +1,7 @@
+/**
+ * Typography loads
+ * SpaceX uses D-DIN; we approximate with Barlow Condensed + Barlow
+ * and keep D-DIN in the font stack for local installs.
+ */
+
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap");

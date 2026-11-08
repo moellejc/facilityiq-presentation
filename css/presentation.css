@@ -1,0 +1,302 @@
+/**
+ * Presentation chrome — deck shell, navigation, progress
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--fiq-black);
+  color: var(--fiq-white);
+  font-family: var(--fiq-font-body);
+  font-size: var(--fiq-text-body);
+  line-height: var(--fiq-leading-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  position: relative;
+}
+
+/* Atmosphere: faint radial wash + micro grid (x.ai dark depth) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 70% 15%, var(--fiq-glow), transparent 55%),
+    radial-gradient(ellipse 60% 50% at 10% 90%, rgba(120, 140, 160, 0.06), transparent 50%),
+    linear-gradient(180deg, var(--fiq-void) 0%, var(--fiq-black) 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.55;
+  background-image:
+    linear-gradient(var(--fiq-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--fiq-grid) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+}
+
+.deck {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+/* Top chrome */
+.deck-chrome {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--fiq-chrome-h);
+  padding: 0 var(--fiq-pad-slide);
+  pointer-events: none;
+}
+
+.deck-chrome > * {
+  pointer-events: auto;
+}
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fiq-space-3);
+  text-decoration: none;
+  color: var(--fiq-white);
+  font-size: var(--fiq-text-nav);
+  font-weight: 700;
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+}
+
+.brand-mark__glyph {
+  width: 18px;
+  height: 18px;
+  border: 1px solid var(--fiq-stroke);
+  background:
+    linear-gradient(135deg, transparent 46%, var(--fiq-white) 46%, var(--fiq-white) 54%, transparent 54%),
+    linear-gradient(45deg, transparent 46%, var(--fiq-white-dim) 46%, var(--fiq-white-dim) 54%, transparent 54%);
+}
+
+.brand-mark__name {
+  opacity: 0.92;
+}
+
+.deck-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--fiq-space-5);
+  font-size: var(--fiq-text-caption);
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  color: var(--fiq-white-dim);
+}
+
+.slide-counter {
+  font-variant-numeric: tabular-nums;
+  color: var(--fiq-white-muted);
+}
+
+.slide-counter__current {
+  color: var(--fiq-white);
+}
+
+.hint {
+  display: none;
+  color: var(--fiq-white-dim);
+}
+
+@media (min-width: 900px) {
+  .hint {
+    display: inline;
+  }
+}
+
+/* Progress */
+.deck-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  height: var(--fiq-progress-h);
+  background: var(--fiq-white-ghost);
+}
+
+.deck-progress__bar {
+  height: 100%;
+  width: 0%;
+  background: var(--fiq-white);
+  transform-origin: left center;
+  transition: width var(--fiq-duration) var(--fiq-ease-out);
+}
+
+/* Slides stage */
+.slides {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: calc(var(--fiq-chrome-h) + var(--fiq-space-6)) var(--fiq-pad-slide) var(--fiq-space-8);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(18px);
+  transition:
+    opacity var(--fiq-duration-slow) var(--fiq-ease-out),
+    transform var(--fiq-duration-slow) var(--fiq-ease-out),
+    visibility 0s linear var(--fiq-duration-slow);
+}
+
+.slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity var(--fiq-duration-slow) var(--fiq-ease-out),
+    transform var(--fiq-duration-slow) var(--fiq-ease-out),
+    visibility 0s linear 0s;
+}
+
+.slide.is-exit-up {
+  transform: translateY(-14px);
+}
+
+.slide.is-exit-down {
+  transform: translateY(18px);
+}
+
+/* Footer controls */
+.deck-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--fiq-space-5) var(--fiq-pad-slide);
+  pointer-events: none;
+}
+
+.deck-controls > * {
+  pointer-events: auto;
+}
+
+.nav-cluster {
+  display: flex;
+  gap: var(--fiq-space-2);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--fiq-stroke);
+  background: var(--fiq-cta-bg);
+  color: var(--fiq-white);
+  font-family: inherit;
+  font-size: var(--fiq-text-body);
+  letter-spacing: var(--fiq-tracking-tight);
+  line-height: 1;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--fiq-radius-cta);
+  cursor: pointer;
+  transition:
+    background var(--fiq-duration-fast) var(--fiq-ease-out),
+    border-color var(--fiq-duration-fast) var(--fiq-ease-out),
+    color var(--fiq-duration-fast) var(--fiq-ease-out),
+    transform var(--fiq-duration-fast) var(--fiq-ease-out);
+}
+
+.btn:hover:not(:disabled) {
+  background: var(--fiq-control-bg);
+  border-color: var(--fiq-white-muted);
+}
+
+.btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+.btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.btn--icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  display: inline-grid;
+  place-items: center;
+  border-radius: var(--fiq-radius-control);
+  background: var(--fiq-control-bg);
+  border-color: transparent;
+}
+
+.btn--icon:hover:not(:disabled) {
+  background: rgba(240, 240, 250, 0.18);
+  border-color: transparent;
+}
+
+.btn--icon svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.section-label {
+  font-size: var(--fiq-text-caption);
+  letter-spacing: var(--fiq-tracking-label);
+  text-transform: uppercase;
+  color: var(--fiq-white-dim);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .slide {
+    transform: none !important;
+  }
+}

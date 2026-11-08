@@ -1,0 +1,80 @@
+/**
+ * FacilityIQ Presentation — Design Tokens
+ * Inspired by SpaceX (spacex.com) + x.ai dark surfaces
+ */
+
+:root {
+  /* Canvas */
+  --fiq-black: #000000;
+  --fiq-void: #050508;
+  --fiq-surface: #0a0a0f;
+  --fiq-surface-elevated: #12121a;
+
+  /* Spectral whites (SpaceX primary) */
+  --fiq-white: #f0f0fa;
+  --fiq-white-pure: #ffffff;
+  --fiq-white-muted: rgba(240, 240, 250, 0.72);
+  --fiq-white-dim: rgba(240, 240, 250, 0.45);
+  --fiq-white-faint: rgba(240, 240, 250, 0.18);
+  --fiq-white-ghost: rgba(240, 240, 250, 0.1);
+
+  /* Strokes */
+  --fiq-stroke: rgba(240, 240, 250, 0.35);
+  --fiq-stroke-soft: rgba(240, 240, 250, 0.14);
+
+  /* Atmosphere (x.ai-adjacent cool dark, no purple cast) */
+  --fiq-glow: rgba(180, 200, 220, 0.08);
+  --fiq-grid: rgba(240, 240, 250, 0.04);
+
+  /* Type */
+  --fiq-font-display: "D-DIN", "DIN Alternate", "Barlow Condensed", "Helvetica Neue", Arial, sans-serif;
+  --fiq-font-body: "D-DIN", "DIN Alternate", "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --fiq-font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Scale */
+  --fiq-text-micro: 0.625rem;   /* 10px */
+  --fiq-text-caption: 0.75rem;  /* 12px */
+  --fiq-text-nav: 0.8125rem;    /* 13px */
+  --fiq-text-body: 1rem;        /* 16px */
+  --fiq-text-lead: 1.25rem;     /* 20px */
+  --fiq-text-title: clamp(1.75rem, 4vw, 2.75rem);
+  --fiq-text-display: clamp(2.5rem, 7vw, 4.5rem);
+  --fiq-text-hero: clamp(3rem, 9vw, 5.5rem);
+
+  --fiq-tracking-tight: 0.02em;
+  --fiq-tracking-label: 0.08em;
+  --fiq-tracking-display: 0.04em;
+
+  --fiq-leading-tight: 1.05;
+  --fiq-leading-body: 1.65;
+
+  /* Space */
+  --fiq-space-1: 0.25rem;
+  --fiq-space-2: 0.5rem;
+  --fiq-space-3: 0.75rem;
+  --fiq-space-4: 1rem;
+  --fiq-space-5: 1.5rem;
+  --fiq-space-6: 2rem;
+  --fiq-space-7: 3rem;
+  --fiq-space-8: 4.5rem;
+  --fiq-space-9: 6rem;
+
+  --fiq-pad-slide: clamp(1.5rem, 5vw, 4.5rem);
+
+  /* Controls */
+  --fiq-radius-cta: 4px;
+  --fiq-radius-control: 999px;
+  --fiq-cta-bg: rgba(0, 0, 0, 0.5);
+  --fiq-control-bg: rgba(240, 240, 250, 0.1);
+
+  /* Motion */
+  --fiq-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --fiq-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --fiq-duration-fast: 180ms;
+  --fiq-duration: 420ms;
+  --fiq-duration-slow: 700ms;
+
+  /* Chrome */
+  --fiq-chrome-h: 3.25rem;
+  --fiq-progress-h: 2px;
+}
