@@ -27,8 +27,8 @@
   --fiq-grid: rgba(240, 240, 250, 0.04);
 
   /* Type */
-  --fiq-font-display: "D-DIN", "DIN Alternate", "Barlow Condensed", "Helvetica Neue", Arial, sans-serif;
-  --fiq-font-body: "D-DIN", "DIN Alternate", "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --fiq-font-display: "Barlow Condensed", "D-DIN", "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
+  --fiq-font-body: "Barlow", "D-DIN", "DIN Alternate", "Helvetica Neue", Arial, sans-serif;
   --fiq-font-mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* Scale */

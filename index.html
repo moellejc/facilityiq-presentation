@@ -4,21 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
-    <meta
-      name="description"
-      content="FacilityIQ — interactive presentation template. SpaceX / x.ai darkmode visual system."
-    />
-    <title>FacilityIQ</title>
+    <meta name="description" content="FacilityIQ — first correct PR in a day, not a month. Joe Moeller · SpaceXSI Solutions Architect technical screen." />
+    <title>FacilityIQ · First correct PR in a day</title>
     <link rel="stylesheet" href="css/fonts.css" />
     <link rel="stylesheet" href="css/tokens.css" />
     <link rel="stylesheet" href="css/presentation.css" />
     <link rel="stylesheet" href="css/slides.css" />
     <link rel="stylesheet" href="css/diagrams.css" />
+    <link rel="stylesheet" href="css/deck.css" />
   </head>
   <body>
-    <div class="deck-progress" aria-hidden="true">
-      <div class="deck-progress__bar" data-progress></div>
-    </div>
+    <!-- Icon sprite (inline, no CDN) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-scaffold" viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><path d="M17 14v6M14 17h6"/></symbol>
+        <symbol id="i-catch" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M8 8l5 5M13 8l-5 5"/></symbol>
+        <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></symbol>
+        <symbol id="i-loop" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.5-4.5M4 13a8 8 0 0 0 14.5 4.5"/><path d="M5 3v4h4M19 21v-4h-4"/></symbol>
+        <symbol id="i-door" viewBox="0 0 24 24"><path d="M4 5h16v11H11l-5 4v-4H4z"/><circle cx="12" cy="9" r="1.8"/><path d="M9 13.5c.6-1.3 1.7-2 3-2s2.4.7 3 2"/></symbol>
+        <symbol id="i-person" viewBox="0 0 24 24"><circle cx="12" cy="7.5" r="3.8"/><path d="M4.5 21c.8-4.2 3.8-6.5 7.5-6.5s6.7 2.3 7.5 6.5"/></symbol>
+        <symbol id="i-slack" viewBox="0 0 24 24"><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/></symbol>
+        <symbol id="i-linear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M4.5 14.5l5 5M3.5 10.5l10 10M5.5 6.5l12 12M9 4l11 11"/></symbol>
+        <symbol id="i-notion" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 16V8l6 8V8"/></symbol>
+        <symbol id="i-github" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="9" r="2"/><path d="M6 7v10M18 11c0 4-6 3-11.5 6.5"/></symbol>
+        <symbol id="i-pr" viewBox="0 0 24 24"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/><path d="M6 7v10M18 17V9a3 3 0 0 0-3-3h-4M13 3.5L10.5 6 13 8.5"/></symbol>
+        <symbol id="i-cursor" viewBox="0 0 24 24"><path d="M5 3l14 7-6 2-2 6z"/><path d="M13 12l6 6"/></symbol>
+        <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M2 13v2M22 13v2"/></symbol>
+        <symbol id="i-ci" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+        <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 2c3 2.5 4.5 6 4.5 10l-2 4h-5l-2-4C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M9.5 16l-2.5 4M14.5 16l2.5 4M12 16v5"/></symbol>
+        <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5.5" rx="7" ry="2.5"/><path d="M5 5.5v13c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5v-13M5 12c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5"/></symbol>
+        <symbol id="i-gate" viewBox="0 0 24 24"><path d="M4 21V5M20 21V5M4 9h16M4 15h16"/></symbol>
+        <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="rgba(240,240,250,.75)"/></marker>
+        <marker id="ah-acc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ffb020"/></marker>
+        <marker id="ah-bad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#ff5a5a"/></marker>
+        <marker id="ah-ok" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#3ddc97"/></marker>
+      </defs>
+    </svg>
+
+    <div class="deck-progress" aria-hidden="true"><div class="deck-progress__bar" data-progress></div></div>
 
     <header class="deck-chrome">
       <a class="brand-mark" href="#title" aria-label="FacilityIQ home">
@@ -26,278 +50,387 @@
         <span class="brand-mark__name">FacilityIQ</span>
       </a>
       <div class="deck-meta">
-        <span class="hint">Space / ← → · Esc closes overview</span>
+        <span class="hint">Space / ← → · O overview · N notes</span>
         <span class="slide-counter" aria-live="polite">
-          <span class="slide-counter__current" data-slide-current>01</span>
-          <span aria-hidden="true"> / </span>
-          <span data-slide-total>00</span>
+          <span class="slide-counter__current" data-slide-current>01</span><span aria-hidden="true"> / </span><span data-slide-total>00</span>
         </span>
       </div>
     </header>
 
     <main class="deck" data-deck tabindex="0" aria-label="FacilityIQ presentation">
       <div class="slides">
-        <!-- TEMPLATE: Title -->
-        <section
-          class="slide slide--hero tpl-title is-active"
-          data-slide
-          data-preview="Title"
-          data-section="Title"
-          id="title"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-title</span>
-          <div class="slide__visual" aria-hidden="true">
-            <div class="slide__visual-plane"></div>
+
+        <!-- 00 · TITLE ─────────────────────────────────────────── -->
+        <section class="slide slide--hero tpl-title has-stage is-active" data-slide data-preview="Title" data-section="FacilityIQ · Grok Build + Grok Bot" id="title">
+          <div class="slide__visual" aria-hidden="true"><div class="slide__visual-plane"></div></div>
+          <div class="stage">
+            <div class="abs t-col">
+              <div class="t-brand reveal"><span class="brand-mark__glyph" aria-hidden="true"></span>FacilityIQ<small>Grok Build + Grok Bot</small></div>
+              <h1 class="t-head reveal reveal-delay-1">First correct PR<br/>in <em>a day</em>, not a month.</h1>
+              <p class="t-sub reveal reveal-delay-2">Ramping engineers on a convention-heavy core library<br/>with Grok Build + Grok Bot.</p>
+              <p class="t-meta reveal reveal-delay-3"><b>Joe Moeller</b> · SpaceXSI Solutions Architect Technical Screen · Nov 12, 2026</p>
+            </div>
+            <div class="abs t-orbit" aria-hidden="true">
+              <div class="ring"></div><div class="ring ring--in"></div>
+              <span class="gate" style="left:230px;top:0"></span><span class="gate" style="left:460px;top:230px"></span>
+              <span class="gate" style="left:230px;top:460px"></span><span class="gate" style="left:0;top:230px"></span>
+              <span class="pkt"></span>
+              <div class="core"><div><b>4 / 4</b>gates green</div></div>
+            </div>
           </div>
-          <div class="brand-lockup reveal">
-            <span class="brand-lockup__name">FacilityIQ</span>
-            <span class="brand-lockup__tag">Operations intelligence</span>
-          </div>
-          <h1 class="headline headline--hero reveal reveal-delay-1">
-            Clarity for every facility
-          </h1>
-          <p class="lede lede--tight reveal reveal-delay-2">
-            Template deck — title, five content patterns, and a close page —
-            in the SpaceX / x.ai dark visual language.
-          </p>
-          <div class="cta-row reveal reveal-delay-3">
-            <button class="btn" type="button" data-next>Begin briefing</button>
-          </div>
+          <aside class="notes">
+            <p><b>0:00–0:30 (30s).</b> Hi Rob. I'm Joe. Over the next 20 minutes: the problem Maya's team has, the architecture I built with Grok Build and Grok Bot, then most of our time in a live demo of one ticket going end to end.</p>
+            <p>The headline: a new engineer on a convention-heavy core library ships a first correct PR in a day, not a month.</p>
+          </aside>
         </section>
 
-        <!-- TEMPLATE 01: Simple text + bullets -->
-        <section
-          class="slide tpl-bullets"
-          data-slide
-          data-preview="Bullets"
-          data-section="Content · Bullets"
-          id="bullets"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-bullets · 01</span>
-          <div class="content-block">
-            <p class="eyebrow reveal">Template 01</p>
-            <h2 class="headline headline--wide reveal reveal-delay-1">
-              Simple text with bullet points
-            </h2>
-            <p class="lede reveal reveal-delay-2">
-              Use this layout for crisp talking points. One headline, a short lede,
-              then a hairline list — no cards.
-            </p>
-            <ul class="bullet-list">
-              <li>Lead with the outcome operators care about</li>
-              <li>Keep each line to a single actionable idea</li>
-              <li>Prefer specificity over slogans</li>
-              <li>Leave room for the speaker to expand</li>
+        <!-- 01 · PROBLEM ───────────────────────────────────────── -->
+        <section class="slide tpl-bullets has-stage" data-slide data-preview="The problem" data-section="01 · The problem" id="problem">
+          <div class="stage">
+            <p class="s-eyebrow reveal">01 · The problem · Maya's platform team</p>
+            <p class="abs p-stat reveal reveal-delay-1">3–4 weeks</p>
+            <p class="abs p-stat-sub reveal reveal-delay-2">to a first mergeable PR</p>
+            <div class="chips" aria-label="Pains">
+              <span class="chip" style="left:1000px;top:150px">Tribal conventions</span>
+              <span class="chip" style="left:1150px;top:212px">Deprecated APIs slip through</span>
+              <span class="chip" style="left:1030px;top:274px">Weak tests</span>
+              <span class="chip" style="left:1250px;top:336px">Boundary violations</span>
+              <span class="chip" style="left:960px;top:398px">Senior reviewers = bottleneck</span>
+              <span class="chip" style="left:1180px;top:460px;">No status for PM / QA / DevOps</span>
+            </div>
+            <p class="abs req-label">Maya needs</p>
+            <div class="abs req-row">
+              <div class="req"><span class="req__n">1</span><svg class="ico req__i"><use href="#i-scaffold"/></svg><p class="req__t">Scaffold a correct first contribution</p></div>
+              <div class="req"><span class="req__n">2</span><svg class="ico req__i"><use href="#i-catch"/></svg><p class="req__t">Catch deprecated APIs, anti-patterns, weak tests before review</p></div>
+              <div class="req"><span class="req__n">3</span><svg class="ico req__i"><use href="#i-shield"/></svg><p class="req__t">Fit CI and guardrails, no boundary crossing</p></div>
+              <div class="req"><span class="req__n">4</span><svg class="ico req__i"><use href="#i-loop"/></svg><p class="req__t">Stay maintainable as the library evolves</p></div>
+              <div class="req"><span class="req__n">5</span><svg class="ico req__i"><use href="#i-door"/></svg><p class="req__t">Bot front door for PM / QA / DevOps, human approval</p></div>
+            </div>
+          </div>
+          <aside class="notes">
+            <p><b>0:30–2:30 (2 min).</b> Maya runs the platform team behind FacilityIQ. Their core library is convention-heavy: today a new engineer takes three to four weeks to get a first mergeable PR.</p>
+            <ul>
+              <li>Conventions are tribal: they live in senior engineers' heads.</li>
+              <li>Deprecated APIs and anti-patterns slip through; tests are weak; people cross module boundaries.</li>
+              <li>Senior reviewers become the bottleneck, and PM, QA, and DevOps have no status view.</li>
             </ul>
-          </div>
+            <p>Maya gave me five requirements. Keep these five icons in mind; they come back as checkmarks.</p>
+          </aside>
         </section>
 
-        <!-- TEMPLATE 02: Split narrative + feature list -->
-        <section
-          class="slide tpl-split"
-          data-slide
-          data-preview="Split"
-          data-section="Content · Split"
-          id="split"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-split · 02</span>
-          <div class="slide__grid slide__grid--split">
-            <div>
-              <p class="eyebrow reveal">Template 02</p>
-              <h2 class="headline reveal reveal-delay-1">
-                Narrative beside a structured list
-              </h2>
-              <p class="lede reveal reveal-delay-2">
-                Two-column composition for framing a problem or capability set
-                without turning the page into a dashboard.
-              </p>
+        <!-- 02 · TODAY ─────────────────────────────────────────── -->
+        <section class="slide tpl-system has-stage" data-slide data-preview="Today" data-section="02 · Today" id="current">
+          <div class="stage">
+            <p class="s-eyebrow reveal">02 · Today</p>
+            <h2 class="s-head reveal reveal-delay-1">Knowledge lives in people, <span class="bad">not the toolchain.</span></h2>
+            <svg class="dg" viewBox="0 0 1600 900" aria-hidden="true">
+              <path class="ln ln--faint ln--dash" d="M 520 470 L 170 420 L 520 700 L 360 290 L 880 420 L 520 700 L 680 290 L 520 470" />
+              <line class="ln ln--faint" x1="1010" y1="250" x2="1010" y2="790" />
+            </svg>
+            <div class="tool tool--home" style="left:520px;top:470px"><div class="tool__c"></div></div>
+            <span class="eng-tag" style="left:462px;top:494px">New engineer</span>
+            <div class="tool" style="left:170px;top:420px"><div class="tool__c"><svg class="ico"><use href="#i-linear"/></svg></div><div class="tool__l">Linear</div></div>
+            <div class="tool" style="left:360px;top:290px"><div class="tool__c"><svg class="ico"><use href="#i-slack"/></svg></div><div class="tool__l">Slack</div></div>
+            <div class="tool" style="left:680px;top:290px"><div class="tool__c"><svg class="ico"><use href="#i-notion"/></svg></div><div class="tool__l">Notion</div></div>
+            <div class="tool" style="left:880px;top:420px"><div class="tool__c"><svg class="ico"><use href="#i-github"/></svg></div><div class="tool__l">GitHub</div></div>
+            <div class="tool tool--senior" style="left:520px;top:700px"><div class="tool__c"><svg class="ico"><use href="#i-person"/></svg></div><div class="tool__l">Senior reviewer <small>bottleneck</small></div></div>
+            <span class="eng" aria-hidden="true"></span>
+
+            <div class="abs team-h" style="left:1060px;top:250px">Teams</div>
+            <span class="team" style="left:1060px;top:288px">FacilityIQ App team</span>
+            <span class="team" style="left:1060px;top:330px">Platform (Next.js + Drizzle)</span>
+            <span class="team" style="left:1060px;top:372px">QA</span>
+            <span class="team" style="left:1260px;top:372px">DevOps</span>
+            <span class="team" style="left:1060px;top:414px">PM</span>
+            <div class="abs team-h" style="left:1060px;top:500px;color:var(--bad)">Gaps</div>
+            <span class="gap" style="left:1040px;top:536px">No encoded standard</span>
+            <span class="gap" style="left:1288px;top:536px">Uneven tests</span>
+            <span class="gap" style="left:1040px;top:600px">No boundary gate</span>
+            <span class="gap" style="left:1288px;top:600px">No security check</span>
+            <span class="gap" style="left:1040px;top:664px">No status view</span>
+            <span class="gap" style="left:1288px;top:664px">No approval front door</span>
+          </div>
+          <aside class="notes">
+            <p><b>2:30–4:00 (90s).</b> Here's a new engineer's week. They bounce: Linear for the ticket, Slack to ask how, Notion for a half-current doc, GitHub, and then everything funnels to a senior reviewer.</p>
+            <p>Five teams touch this: the FacilityIQ app team, the platform team that owns the Next.js and Drizzle core, QA, DevOps, and PM. None of the standards are encoded, so we get six gaps: no encoded standard, uneven tests, no boundary gate, no security check, no status view, and no approval front door.</p>
+            <p>The point: knowledge lives in people, not the toolchain. My job is to move it into the toolchain.</p>
+          </aside>
+        </section>
+
+        <!-- 03 · ARCHITECTURE (hero) ───────────────────────────── -->
+        <section class="slide tpl-system has-stage" data-slide data-preview="Architecture" data-section="03 · Solution architecture" id="architecture">
+          <div class="stage">
+            <p class="s-eyebrow reveal">03 · Solution architecture</p>
+            <h2 class="s-head reveal reveal-delay-1">Encode the standard. <span class="acc">Gate every PR.</span></h2>
+
+            <div class="lane" style="left:80px;top:220px;width:290px;height:460px"><span class="lane__h">Standards</span></div>
+            <div class="lane" style="left:390px;top:220px;width:300px;height:460px"><span class="lane__h">Build · Cursor</span></div>
+            <div class="lane" style="left:710px;top:220px;width:380px;height:460px;border-color:rgba(255,176,32,.25)"><span class="lane__h acc">4 Gates</span><span class="lane__h" style="left:120px;top:15px;font-size:13px;letter-spacing:.08em">hooks · guardrails CI</span></div>
+            <div class="lane" style="left:1110px;top:220px;width:410px;height:460px"><span class="lane__h">Bot front door · Slack / Linear</span></div>
+            <div class="lane" style="left:80px;top:695px;width:1440px;height:70px"></div>
+
+            <svg class="dg" viewBox="0 0 1600 900" aria-hidden="true">
+              <!-- standards spine -->
+              <path class="ln" d="M 122 356 V 565" />
+              <path class="ln" d="M 122 425 H 136 M 122 495 H 136 M 122 565 H 136" marker-end="url(#ah)" />
+              <!-- standards -> build -->
+              <path class="ln ln--flow" d="M 350 425 C 382 425 380 420 406 420" marker-end="url(#ah)" />
+              <path class="ln ln--flow" d="M 350 495 C 384 495 378 424 406 422" marker-end="url(#ah)" />
+              <path class="ln ln--flow" d="M 350 565 C 386 565 376 428 406 424" marker-end="url(#ah)" />
+              <!-- synthesized data -> build -->
+              <path class="ln ln--dot" d="M 540 560 V 486" marker-end="url(#ah)" />
+              <!-- build -> gates bracket -->
+              <path class="ln ln--acc ln--flow" d="M 670 420 H 726" />
+              <path class="ln ln--acc" d="M 726 316 V 580" />
+              <path class="ln ln--acc" d="M 726 316 H 746 M 726 404 H 746 M 726 492 H 746 M 726 580 H 746" marker-end="url(#ah-acc)" />
+              <!-- gates -> PR -->
+              <path class="ln ln--acc" d="M 1070 316 H 1090 M 1070 404 H 1090 M 1070 492 H 1090 M 1070 580 H 1090 M 1090 302 V 580" />
+              <path class="ln ln--acc ln--flow" d="M 1090 302 H 1146" marker-end="url(#ah-acc)" />
+              <!-- front door chain -->
+              <path class="ln" d="M 1315 324 V 340" marker-end="url(#ah)" />
+              <path class="ln" d="M 1315 404 V 424" marker-end="url(#ah-acc)" />
+              <path class="ln ln--dash" d="M 1315 500 V 520" marker-end="url(#ah)" />
+              <path class="ln ln--dash" d="M 1315 568 V 588" marker-end="url(#ah)" />
+              <!-- maintainability loop -->
+              <path class="ln ln--acc ln--flow" d="M 1150 730 H 946" marker-end="url(#ah-acc)" />
+              <path class="ln ln--acc ln--flow" d="M 600 730 H 248 V 596" marker-end="url(#ah-acc)" />
+            </svg>
+
+            <!-- standards -->
+            <div class="node" style="left:100px;top:268px;width:250px;height:88px"><svg class="ico"><use href="#i-notion"/></svg><div>Notion Eng Standards<small>by Staff Eng + PM bots</small></div></div>
+            <div class="node s-mono" style="left:140px;top:400px;width:210px;height:50px;font:500 17px/1 var(--fiq-font-mono)">AGENTS.md</div>
+            <div class="node s-mono" style="left:140px;top:470px;width:210px;height:50px;font:500 17px/1 var(--fiq-font-mono)">.cursor/rules</div>
+            <div class="node s-mono" style="left:140px;top:540px;width:210px;height:50px;font:500 17px/1 var(--fiq-font-mono)">Skills</div>
+
+            <!-- build -->
+            <div class="node" style="left:410px;top:360px;width:260px;height:120px"><svg class="ico" style="font-size:34px"><use href="#i-cursor"/></svg><div>Grok Build<small>skill scaffolds the route</small><small class="s-mono" style="font-size:13px;color:var(--fiq-white-dim)">app/finance/…</small></div></div>
+            <span class="badge" style="left:656px;top:346px">1</span>
+            <div class="node node--dot" style="left:410px;top:560px;width:260px;height:66px"><svg class="ico"><use href="#i-db"/></svg><div>Synthesized data<small>Drizzle · warehouse seed</small></div></div>
+
+            <!-- gates -->
+            <div class="node node--acc" style="left:750px;top:280px;width:320px;height:72px;font-size:18px"><span class="gate-i">G1</span><div>Conventions &amp; deprecated APIs<small>AGENTS.md rules enforced</small></div></div>
+            <div class="node node--acc" style="left:750px;top:368px;width:320px;height:72px;font-size:18px"><span class="gate-i">G2</span><div>Test strength<small>weak tests rejected</small></div></div>
+            <div class="node node--acc" style="left:750px;top:456px;width:320px;height:72px;font-size:18px"><span class="gate-i">G3</span><div>Boundaries<small class="s-mono" style="font-size:13px">app/finance/** · lib/db/** · server/client</small></div></div>
+            <div class="node node--acc" style="left:750px;top:544px;width:320px;height:72px;font-size:18px"><span class="gate-i">G4</span><div>Security<small>no secrets · no .env reads · synth data</small></div></div>
+            <span class="badge" style="left:1056px;top:266px">2</span><span class="badge" style="left:1056px;top:354px">2</span>
+            <span class="badge" style="left:1056px;top:442px">3</span><span class="badge" style="left:1056px;top:530px">3</span>
+
+            <!-- front door -->
+            <div class="node" style="left:1150px;top:280px;width:330px;height:44px"><svg class="ico"><use href="#i-pr"/></svg>Pull request</div>
+            <div class="node" style="left:1150px;top:344px;width:330px;height:60px"><svg class="ico"><use href="#i-bot"/></svg><div>FacilityIQ Staff Eng bot<small>status in Slack + Linear</small></div></div>
+            <div class="node node--acc node--hero" style="left:1150px;top:428px;width:330px;height:72px;font-size:23px;text-transform:uppercase;letter-spacing:.06em"><svg class="ico" style="font-size:34px"><use href="#i-person"/></svg>Human approval</div>
+            <div class="node node--dash" style="left:1150px;top:524px;width:330px;height:44px"><svg class="ico"><use href="#i-ci"/></svg>CI deploy <small style="margin:0 0 0 6px">(mocked)</small></div>
+            <div class="node" style="left:1150px;top:592px;width:330px;height:44px"><svg class="ico ok"><use href="#i-check"/></svg>Merge</div>
+            <span class="badge" style="left:1466px;top:330px">5</span><span class="badge" style="left:1466px;top:414px">5</span>
+
+            <!-- loop -->
+            <span class="abs lane__h" style="left:98px;top:740px">Maintainability loop</span>
+            <span class="abs fix-l acc" style="left:300px;top:706px">updates rules + skills</span>
+            <div class="node node--acc" style="left:600px;top:707px;width:340px;height:46px"><svg class="ico"><use href="#i-loop"/></svg>Library-drift automation</div>
+            <span class="badge" style="left:926px;top:693px">4</span>
+            <div class="node" style="left:1150px;top:707px;width:330px;height:46px"><svg class="ico"><use href="#i-rocket"/></svg>Next.js release</div>
+
+            <!-- legend + stack -->
+            <svg class="abs" style="left:80px;top:788px" width="560" height="26" aria-hidden="true">
+              <line class="ln" x1="0" y1="13" x2="44" y2="13"/><text x="54" y="18" fill="rgba(240,240,250,.75)" font-family="Barlow" font-size="17">live</text>
+              <line class="ln ln--dash" x1="110" y1="13" x2="154" y2="13"/><text x="164" y="18" fill="rgba(240,240,250,.75)" font-family="Barlow" font-size="17">mocked (CI deploy)</text>
+              <line class="ln ln--dot" x1="320" y1="13" x2="364" y2="13"/><text x="374" y="18" fill="rgba(240,240,250,.75)" font-family="Barlow" font-size="17">synthesized (data)</text>
+            </svg>
+            <p class="abs s-mono" style="right:80px;top:792px;margin:0;font-size:14px;color:var(--fiq-white-dim)">Next.js = stand-in core library · Drizzle = data layer · FacilityIQ = thin Acme wrapper</p>
+          </div>
+          <aside class="notes">
+            <p><b>4:00–7:00 (3 min).</b> Read it left to right.</p>
+            <ul>
+              <li><b>Standards:</b> the Staff Eng and PM bots write the engineering standards in Notion. Those compile into AGENTS.md, .cursor/rules, and Skills, so the standard lives in the repo, not in someone's head.</li>
+              <li><b>Build (requirement 1):</b> in Cursor, Grok Build uses a skill to scaffold the route the Acme way. The data is synthesized through Drizzle.</li>
+              <li><b>Four gates (requirements 2 and 3):</b> pre-commit and pre-PR hooks plus a guardrails CI workflow check conventions and deprecated APIs, test strength, boundaries (only app/finance/** and lib/db**, and the server/client split), and security (no secrets, no .env reads, synthesized data only).</li>
+              <li><b>Front door (requirement 5):</b> the PR shows up in Slack and Linear through the FacilityIQ Staff Eng bot. A human approves. Then CI, which is mocked here, and merge.</li>
+              <li><b>Loop (requirement 4):</b> a Next.js release triggers the library-drift automation, which updates the rules and skills.</li>
+            </ul>
+            <p>Legend: solid lines are live, dashed are mocked, dotted are synthesized. Next.js stands in for Maya's core library.</p>
+          </aside>
+        </section>
+
+        <!-- 04 · FLOW + LIVE DEMO ───────────────────────────────── -->
+        <section class="slide tpl-flow has-stage" data-slide data-preview="One ticket + live demo" data-section="04 · One ticket, end to end" id="flow">
+          <div class="stage">
+            <p class="s-eyebrow reveal">04 · One ticket, end to end · <b>hero ticket</b></p>
+            <h2 class="s-head reveal reveal-delay-1">Finance: cost by category.</h2>
+
+            <svg class="dg" viewBox="0 0 1600 900" aria-hidden="true">
+              <path class="ln ln--flow" d="M 150 330 H 632" />
+              <path class="ln ln--acc ln--flow" d="M 808 330 H 1270" />
+              <path class="ln ln--dash" d="M 1270 330 H 1450" />
+              <path class="ln ln--bad" d="M 690 366 V 466" marker-end="url(#ah-bad)" />
+              <path class="ln ln--ok" d="M 750 470 V 370" marker-end="url(#ah-ok)" />
+            </svg>
+            <div class="st" style="left:150px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-slack"/></svg></div><div class="st__l">Slack ask</div></div>
+            <div class="st" style="left:330px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-linear"/></svg></div><div class="st__l">Linear<small>FAIQ ticket</small></div></div>
+            <div class="st" style="left:510px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-cursor"/></svg></div><div class="st__l">Cloud Agent<small>Cursor scaffold</small></div></div>
+            <div class="st" style="left:720px;top:330px"><div class="gates4"><i>G1</i><i>G2</i><i>G3</i><i>G4</i></div><div class="st__l st__l--top acc">4 gates</div></div>
+            <div class="st" style="left:920px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-pr"/></svg></div><div class="st__l">PR</div></div>
+            <div class="st" style="left:1095px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-bot"/></svg></div><div class="st__l">Bot status<small>Slack + Linear</small></div></div>
+            <div class="st st--acc" style="left:1270px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-person"/></svg></div><div class="st__l acc">Human approve</div></div>
+            <div class="st st--dash" style="left:1450px;top:330px"><div class="st__c"><svg class="ico"><use href="#i-ci"/></svg></div><div class="st__l">CI<small>mocked</small></div></div>
+
+            <span class="abs fix-l bad" style="left:600px;top:404px">fail</span>
+            <span class="abs fix-l ok" style="left:764px;top:404px">agent fixes → green</span>
+            <div class="node node--bad fail"><code>getServerSideProps in app/</code><span>Caught before senior review</span></div>
+            <span class="pkt f-pkt" aria-hidden="true"></span>
+
+            <div class="abs demo reveal reveal-delay-2">
+              <div class="demo__b"><span class="demo__dot"></span>Live demo</div>
+              <p class="demo__s">Switching to Cursor + Grok Bot</p>
             </div>
-            <ol class="feature-list reveal reveal-delay-3">
-              <li>
-                <span class="feature-list__index">01</span>
-                <div>
-                  <h3 class="feature-list__title">Fragmented systems</h3>
-                  <p class="feature-list__body">
-                    BMS, CMMS, and IoT streams never share a single operational picture.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span class="feature-list__index">02</span>
-                <div>
-                  <h3 class="feature-list__title">Alert fatigue</h3>
-                  <p class="feature-list__body">
-                    Noise outruns signal. High-severity events compete with false positives.
-                  </p>
-                </div>
-              </li>
-              <li>
-                <span class="feature-list__index">03</span>
-                <div>
-                  <h3 class="feature-list__title">Slow handoff</h3>
-                  <p class="feature-list__body">
-                    Context dies between shifts. Institutional knowledge stays tribal.
-                  </p>
-                </div>
-              </li>
+            <figure class="abs inset" style="margin:0">
+              <p>Wrapper app · FacilityIQ</p>
+              <img src="assets/facilityiq-dashboard.jpg" alt="FacilityIQ dashboard: the thin Acme wrapper app" />
+            </figure>
+          </div>
+          <aside class="notes">
+            <p><b>7:00–16:00 (about 9 min, mostly demo).</b> One ticket, end to end. The hero ticket is "Finance: cost by category."</p>
+            <ol>
+              <li>A PM asks in Slack. Grok Bot files the FAIQ ticket in Linear.</li>
+              <li>A Cloud Agent in Cursor scaffolds the route with the skill.</li>
+              <li>The four gates run. Watch the red branch: the agent reaches for getServerSideProps inside app/, which is a deprecated pattern. The conventions gate catches it before any senior engineer sees it. The agent fixes it and the gates go green.</li>
+              <li>The PR opens. The Staff Eng bot posts status in Slack and Linear. A human approves. CI runs (mocked).</li>
             </ol>
-          </div>
+            <p><b>Switch to Cursor + Grok Bot now.</b> Demo order: Slack ask → Linear FAIQ ticket → Cloud Agent run → hook output showing the getServerSideProps catch → fix → PR → bot status → approve. The inset is the FacilityIQ dashboard, the thin Acme wrapper app; open it if there's time.</p>
+            <p>Backup if the live run stalls: walk through the pipeline on this slide and show the recorded PR.</p>
+          </aside>
         </section>
 
-        <!-- TEMPLATE 03: Metrics -->
-        <section
-          class="slide tpl-metrics"
-          data-slide
-          data-preview="Metrics"
-          data-section="Content · Metrics"
-          id="metrics"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-metrics · 03</span>
-          <p class="eyebrow reveal">Template 03</p>
-          <h2 class="headline reveal reveal-delay-1">
-            Headline with proof metrics
-          </h2>
-          <p class="lede reveal reveal-delay-2">
-            Mid-deck evidence strip. Never place metrics in the title viewport —
-            they belong here, after the story is set.
-          </p>
-          <div class="metric-row reveal reveal-delay-3">
-            <div>
-              <span class="metric__value">&lt;2m</span>
-              <span class="metric__label">Mean time to context</span>
+        <!-- 05 · RESULTS ───────────────────────────────────────── -->
+        <section class="slide tpl-metrics has-stage" data-slide data-preview="Results" data-section="05 · Results" id="results">
+          <div class="stage">
+            <p class="s-eyebrow reveal">05 · Results</p>
+            <p class="abs r-big reveal reveal-delay-1"><span class="from">3–4 weeks</span><span class="arr">→</span>1 day</p>
+            <span class="abs r-tag" style="left:80px;top:338px">Targets</span>
+            <div class="abs r-metrics reveal reveal-delay-2">
+              <div><span class="v">1st review</span><span class="l">First PR passes all four gates</span></div>
+              <div><span class="v">↓ Time</span><span class="l">Senior review time per new-hire PR</span></div>
+              <div><span class="v">0</span><span class="l">Deprecated-API regressions</span></div>
             </div>
-            <div>
-              <span class="metric__value">1 pane</span>
-              <span class="metric__label">Operational truth</span>
+            <div class="abs r-reqs reveal reveal-delay-3"><div class="mini-cap" style="margin:-8px 0 18px">Maya's 5 requirements</div>
+              <div class="row">
+                <div class="r-req"><svg class="ico"><use href="#i-scaffold"/></svg><b><svg class="ico"><use href="#i-check"/></svg></b><span>1</span></div>
+                <div class="r-req"><svg class="ico"><use href="#i-catch"/></svg><b><svg class="ico"><use href="#i-check"/></svg></b><span>2</span></div>
+                <div class="r-req"><svg class="ico"><use href="#i-shield"/></svg><b><svg class="ico"><use href="#i-check"/></svg></b><span>3</span></div>
+                <div class="r-req"><svg class="ico"><use href="#i-loop"/></svg><b><svg class="ico"><use href="#i-check"/></svg></b><span>4</span></div>
+                <div class="r-req"><svg class="ico"><use href="#i-door"/></svg><b><svg class="ico"><use href="#i-check"/></svg></b><span>5</span></div>
+              </div>
             </div>
-            <div>
-              <span class="metric__value">24/7</span>
-              <span class="metric__label">Continuous watch</span>
+            <div class="abs lms reveal reveal-delay-4">
+              <div><h4><i></i>Live</h4><p>Cursor rules, skills, hooks · guard scripts · Slack → Linear → Cloud Agent → PR</p></div>
+              <div class="m"><h4><i></i>Mocked</h4><p>Deploy and CI environments</p></div>
+              <div class="s"><h4><i></i>Synthesized</h4><p>Warehouse data and Acme conventions</p></div>
             </div>
           </div>
+          <aside class="notes">
+            <p><b>16:00–17:30 (90s).</b> The goal: three to four weeks down to one day for a first correct PR.</p>
+            <p>These are targets, not measured results. The three I'd track in a pilot: the first PR passes all four gates on first review; senior review time per new-hire PR goes down; zero deprecated-API regressions.</p>
+            <p>All five of Maya's requirements are covered. To be clear about what's real: the Cursor rules, skills, hooks, guard scripts, and the Slack → Linear → Cloud Agent → PR path are live. Deploy and CI environments are mocked. The warehouse data and the Acme conventions are synthesized.</p>
+          </aside>
         </section>
 
-        <!-- TEMPLATE 04: Animated process flow -->
-        <section
-          class="slide tpl-flow"
-          data-slide
-          data-preview="Flow"
-          data-section="Content · Flow"
-          id="flow"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-flow · 04</span>
-          <div class="slide__grid slide__grid--diagram">
-            <div>
-              <p class="eyebrow reveal">Template 04</p>
-              <h2 class="headline reveal reveal-delay-1">
-                Animated process flow
-              </h2>
-              <p class="lede reveal reveal-delay-2">
-                Sequential steps with drawing connectors and pulse nodes —
-                ideal for “how it works” briefings.
-              </p>
+        <!-- 06 · ART OF THE POSSIBLE ───────────────────────────── -->
+        <section class="slide tpl-system has-stage" data-slide data-preview="Art of the possible" data-section="06 · Art of the possible" id="next">
+          <div class="stage">
+            <p class="s-eyebrow reveal">06 · Art of the possible · Code Factories</p>
+            <h2 class="s-head reveal reveal-delay-1">Scale the agents, <span class="acc">keep the gates.</span></h2>
+
+            <!-- mini architecture -->
+            <div class="abs mini"></div>
+            <svg class="abs" style="left:80px;top:250px" width="470" height="420" viewBox="0 0 470 420" aria-hidden="true" font-family="Barlow">
+              <text x="22" y="34" fill="rgba(240,240,250,.5)" font-family="Roboto Mono" font-size="14" letter-spacing="1.5">TODAY · ONE TICKET</text>
+              <g fill="rgba(240,240,250,.04)" stroke="rgba(240,240,250,.14)"><rect x="20" y="60" width="90" height="250" rx="6"/><rect x="128" y="60" width="90" height="250" rx="6"/><rect x="236" y="60" width="96" height="250" rx="6" stroke="rgba(255,176,32,.4)"/><rect x="350" y="60" width="100" height="250" rx="6"/></g>
+              <g fill="rgba(240,240,250,.75)" font-size="13" font-weight="600" letter-spacing="1"><text x="30" y="82">STANDARDS</text><text x="138" y="82">BUILD</text><text x="246" y="82" fill="#ffb020">4 GATES</text><text x="360" y="82">FRONT DOOR</text></g>
+              <g fill="#08080c" stroke="rgba(240,240,250,.45)" stroke-width="1.5"><rect x="32" y="100" width="66" height="34" rx="4"/><rect x="40" y="150" width="58" height="22" rx="3"/><rect x="40" y="182" width="58" height="22" rx="3"/><rect x="40" y="214" width="58" height="22" rx="3"/><rect x="140" y="150" width="66" height="54" rx="4"/><rect x="140" y="240" width="66" height="30" rx="4" stroke-dasharray="1.5 4"/><rect x="362" y="100" width="76" height="24" rx="3"/><rect x="362" y="134" width="76" height="28" rx="3"/><rect x="362" y="210" width="76" height="22" rx="3" stroke-dasharray="5 4"/><rect x="362" y="242" width="76" height="22" rx="3"/></g>
+              <g fill="rgba(255,176,32,.18)" stroke="#ffb020" stroke-width="1.5"><rect x="248" y="100" width="72" height="34" rx="3"/><rect x="248" y="144" width="72" height="34" rx="3"/><rect x="248" y="188" width="72" height="34" rx="3"/><rect x="248" y="232" width="72" height="34" rx="3"/><rect x="362" y="172" width="76" height="28" rx="3" stroke-width="2.5"/></g>
+              <g class="ln" style="stroke-width:1.5"><path d="M 110 186 H 136" marker-end="url(#ah)"/><path d="M 218 180 H 244" marker-end="url(#ah)" class="ln--acc"/><path d="M 332 112 H 358" marker-end="url(#ah)" class="ln--acc"/></g>
+              <path class="ln ln--acc ln--flow" style="stroke-width:1.5" d="M 400 270 V 350 H 69 V 240" marker-end="url(#ah-acc)"/>
+              <text x="160" y="372" fill="#ffb020" font-family="Roboto Mono" font-size="13" letter-spacing="1">DRIFT LOOP</text>
+            </svg>
+            <svg class="abs" style="left:566px;top:430px" width="90" height="60" aria-hidden="true"><path class="ln ln--flow" style="stroke-width:3" d="M 6 30 H 78" marker-end="url(#ah)"/></svg>
+
+            <!-- code factory -->
+            <div class="abs mini-cap" style="left:680px;top:236px">Linear backlog</div>
+            <div class="abs mini-cap" style="left:900px;top:236px">Cloud Agents ×N</div>
+            <div class="abs mini-cap acc" style="left:1110px;top:236px">Same 4 gates</div>
+            <div class="abs mini-cap acc" style="left:1266px;top:236px">Human</div>
+            <div class="abs mini-cap" style="left:1392px;top:236px">Merged</div>
+            <div class="stack">
+              <div style="left:692px;top:398px;opacity:.35"></div><div style="left:686px;top:410px;opacity:.55"></div><div style="left:680px;top:422px;opacity:.8"></div>
+              <div style="left:674px;top:434px;display:flex;align-items:center;gap:8px;padding:0 12px;font:600 15px/1 var(--fiq-font-mono);color:var(--fiq-white)"><svg class="ico" style="font-size:20px"><use href="#i-linear"/></svg>FAIQ-…</div>
             </div>
-            <ol class="flow" aria-label="FacilityIQ operating loop">
-              <li class="flow__step">
-                <span class="flow__index">01</span>
-                <h3 class="flow__title">Sense</h3>
-                <p class="flow__body">Ingest telemetry across equipment and spaces.</p>
-              </li>
-              <li class="flow__step">
-                <span class="flow__index">02</span>
-                <h3 class="flow__title">Correlate</h3>
-                <p class="flow__body">Join events into a live facility model.</p>
-              </li>
-              <li class="flow__step">
-                <span class="flow__index">03</span>
-                <h3 class="flow__title">Rank</h3>
-                <p class="flow__body">Score risk by uptime, safety, and cost.</p>
-              </li>
-              <li class="flow__step">
-                <span class="flow__index">04</span>
-                <h3 class="flow__title">Route</h3>
-                <p class="flow__body">Push the next action with context attached.</p>
-              </li>
-            </ol>
+            <svg class="dg" viewBox="0 0 1600 900" aria-hidden="true">
+              <g class="ln ln--faint" style="stroke:rgba(240,240,250,.3);stroke-width:1.5">
+                <path d="M 826 457 C 860 457 860 290 896 290"/><path d="M 826 457 C 860 457 860 362 896 362"/><path d="M 826 457 C 860 457 860 434 896 434"/>
+                <path d="M 826 457 C 860 457 860 506 896 506"/><path d="M 826 457 C 860 457 860 578 896 578"/><path d="M 826 457 C 860 457 860 650 896 650"/>
+              </g>
+              <g class="ln ln--faint" style="stroke:rgba(240,240,250,.25);stroke-width:1.5">
+                <path d="M 1070 290 H 1422"/><path d="M 1070 362 H 1422"/><path d="M 1070 434 H 1422"/><path d="M 1070 506 H 1422"/><path d="M 1070 578 H 1422"/><path d="M 1070 650 H 1422"/>
+              </g>
+            </svg>
+            <div class="agent" style="left:900px;top:270px"><svg class="ico"><use href="#i-cursor"/></svg>Cloud Agent</div>
+            <div class="agent" style="left:900px;top:342px"><svg class="ico"><use href="#i-cursor"/></svg>Cloud Agent</div>
+            <div class="agent" style="left:900px;top:414px"><svg class="ico"><use href="#i-cursor"/></svg>Cloud Agent</div>
+            <div class="agent" style="left:900px;top:486px"><svg class="ico"><use href="#i-cursor"/></svg>Cloud Agent</div>
+            <div class="agent" style="left:900px;top:558px"><svg class="ico"><use href="#i-cursor"/></svg>Cloud Agent</div>
+            <div class="agent" style="left:900px;top:630px"><svg class="ico"><use href="#i-cursor"/></svg>Cloud Agent</div>
+            <span class="fpkt" style="offset-path:path('M 1070 290 H 1422');animation-delay:0s"></span>
+            <span class="fpkt" style="offset-path:path('M 1070 362 H 1422');animation-delay:-2.1s"></span>
+            <span class="fpkt" style="offset-path:path('M 1070 434 H 1422');animation-delay:-3.7s"></span>
+            <span class="fpkt" style="offset-path:path('M 1070 506 H 1422');animation-delay:-1.2s"></span>
+            <span class="fpkt" style="offset-path:path('M 1070 578 H 1422');animation-delay:-4.3s"></span>
+            <span class="fpkt" style="offset-path:path('M 1070 650 H 1422');animation-delay:-2.8s"></span>
+            <div class="g-mini" style="left:1110px;top:273px"><i></i><i></i><i></i><i></i></div>
+            <div class="g-mini" style="left:1110px;top:345px"><i></i><i></i><i></i><i></i></div>
+            <div class="g-mini" style="left:1110px;top:417px"><i></i><i></i><i></i><i></i></div>
+            <div class="g-mini" style="left:1110px;top:489px"><i></i><i></i><i></i><i></i></div>
+            <div class="g-mini" style="left:1110px;top:561px"><i></i><i></i><i></i><i></i></div>
+            <div class="g-mini" style="left:1110px;top:633px"><i></i><i></i><i></i><i></i></div>
+            <div class="ap" style="left:1280px;top:271px"><svg class="ico"><use href="#i-person"/></svg></div>
+            <div class="ap" style="left:1280px;top:343px"><svg class="ico"><use href="#i-person"/></svg></div>
+            <div class="ap" style="left:1280px;top:415px"><svg class="ico"><use href="#i-person"/></svg></div>
+            <div class="ap" style="left:1280px;top:487px"><svg class="ico"><use href="#i-person"/></svg></div>
+            <div class="ap" style="left:1280px;top:559px"><svg class="ico"><use href="#i-person"/></svg></div>
+            <div class="ap" style="left:1280px;top:631px"><svg class="ico"><use href="#i-person"/></svg></div>
+            <span class="mg" style="left:1416px;top:283px"></span><span class="mg" style="left:1416px;top:355px"></span><span class="mg" style="left:1416px;top:427px"></span>
+            <span class="mg" style="left:1416px;top:499px"></span><span class="mg" style="left:1416px;top:571px"></span><span class="mg" style="left:1416px;top:643px"></span>
+            <div class="abs mini-cap" style="left:680px;top:300px;line-height:1.6;color:var(--fiq-white-muted)">Cursor API<br/>+ Automations</div>
+
+            <div class="abs mini-cap" style="left:680px;top:738px">More front doors</div>
+            <span class="door" style="left:900px;top:722px"><svg class="ico"><use href="#i-bot"/></svg>QA bot</span>
+            <span class="door" style="left:1050px;top:722px"><svg class="ico"><use href="#i-shield"/></svg>Security bot</span>
+            <span class="door" style="left:1240px;top:722px"><svg class="ico"><use href="#i-rocket"/></svg>DevOps bot</span>
           </div>
+          <aside class="notes">
+            <p><b>17:30–19:00 (90s).</b> On the left is the same architecture, shrunk: one ticket. On the right is where it goes: Code Factories.</p>
+            <ul>
+              <li>Many Cloud Agents run in parallel off the Linear backlog, driven by the Cursor API and Automations at scale.</li>
+              <li>More front doors: QA, Security, and DevOps bots next to the Staff Eng bot.</li>
+              <li>The constant: every output still passes the same four gates and a human approval.</li>
+            </ul>
+            <p>Scale the agents, keep the gates.</p>
+          </aside>
         </section>
 
-        <!-- TEMPLATE 05: Complex animated system diagram -->
-        <section
-          class="slide tpl-system"
-          data-slide
-          data-preview="System"
-          data-section="Content · System"
-          id="system"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-system · 05</span>
-          <div class="slide__grid slide__grid--diagram">
-            <div>
-              <p class="eyebrow reveal">Template 05</p>
-              <h2 class="headline reveal reveal-delay-1">
-                System diagram with motion
-              </h2>
-              <p class="lede reveal reveal-delay-2">
-                Complex visual: orbital nodes, dashed signal beams, and a traveling
-                packet around the FacilityIQ hub.
-              </p>
+        <!-- 07 · THANK YOU ─────────────────────────────────────── -->
+        <section class="slide tpl-thanks slide--close has-stage" data-slide data-preview="Thank you" data-section="Close" id="thanks">
+          <div class="slide__visual" aria-hidden="true"><div class="slide__visual-plane"></div></div>
+          <div class="stage">
+            <p class="s-eyebrow reveal" style="top:200px">FacilityIQ · Grok Build + Grok Bot</p>
+            <h2 class="abs th-head reveal reveal-delay-1">Thank you</h2>
+            <p class="abs th-name reveal reveal-delay-2">Joe Moeller</p>
+            <div class="abs th-contact reveal reveal-delay-3">
+              <a href="mailto:moellejc@gmail.com">moellejc@gmail.com</a><span aria-hidden="true">·</span><a href="https://github.com/moellejc">github.com/moellejc</a>
             </div>
-            <div class="system" aria-label="FacilityIQ system diagram" role="img">
-              <div class="system__ring system__ring--outer" aria-hidden="true"></div>
-              <div class="system__ring system__ring--mid" aria-hidden="true"></div>
-              <svg class="system__beams" viewBox="0 0 100 100" aria-hidden="true">
-                <line class="system__beam" x1="50" y1="50" x2="50" y2="12" />
-                <line class="system__beam" x1="50" y1="50" x2="88" y2="50" />
-                <line class="system__beam" x1="50" y1="50" x2="50" y2="88" />
-                <line class="system__beam" x1="50" y1="50" x2="12" y2="50" />
-              </svg>
-              <div class="system__packet" aria-hidden="true"></div>
-              <div class="system__hub">
-                <span class="system__hub-label">Facility<br />IQ</span>
-              </div>
-              <div class="system__node system__node--n">
-                <div class="system__node-dot" aria-hidden="true"></div>
-                <span class="system__node-label">Sensors</span>
-              </div>
-              <div class="system__node system__node--e">
-                <div class="system__node-dot" aria-hidden="true"></div>
-                <span class="system__node-label">CMMS</span>
-              </div>
-              <div class="system__node system__node--s">
-                <div class="system__node-dot" aria-hidden="true"></div>
-                <span class="system__node-label">Operators</span>
-              </div>
-              <div class="system__node system__node--w">
-                <div class="system__node-dot" aria-hidden="true"></div>
-                <span class="system__node-label">BMS</span>
-              </div>
-            </div>
+            <p class="abs th-q reveal reveal-delay-4">Questions?</p>
           </div>
-        </section>
-
-        <!-- TEMPLATE: Close / Thank You -->
-        <section
-          class="slide tpl-thanks slide--close"
-          data-slide
-          data-preview="Thank You"
-          data-section="Close"
-          id="thanks"
-        >
-          <span class="tpl-badge" aria-hidden="true">tpl-thanks</span>
-          <div class="slide__visual" aria-hidden="true">
-            <div class="slide__visual-plane"></div>
-          </div>
-          <p class="thanks-mark reveal">FacilityIQ</p>
-          <h2 class="headline reveal reveal-delay-1">Thank you</h2>
-          <p class="lede reveal reveal-delay-2">
-            Questions, pilots, and next briefings — we’re ready when the floor goes live.
-          </p>
-          <div class="contact-line reveal reveal-delay-3">
-            <a href="mailto:hello@facilityiq.example">hello@facilityiq.example</a>
-            <span aria-hidden="true">·</span>
-            <span>Pull up for slide overview</span>
-          </div>
-          <p class="mono-line reveal reveal-delay-4">facilityiq · presentation system · v0.2</p>
+          <aside class="notes">
+            <p><b>19:00–20:00 (1 min, then Q&amp;A).</b> Thanks, Rob. Recap: encode the standard, gate every PR, keep a human on approval, and the first correct PR takes a day. Happy to go deeper on the hooks, the drift automation, or how this scales.</p>
+          </aside>
         </section>
       </div>
     </main>
@@ -305,61 +438,20 @@
     <footer class="deck-controls">
       <span class="section-label" data-section-label>Title</span>
       <div class="nav-cluster">
-        <button class="btn btn--icon" type="button" data-prev aria-label="Previous slide" disabled>
-          <svg viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M10 3L5 8l5 5" />
-          </svg>
-        </button>
-        <button
-          class="btn btn--icon"
-          type="button"
-          data-overview-toggle
-          aria-label="Open slide overview"
-          aria-expanded="false"
-          aria-controls="slide-overview"
-        >
-          <svg viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M2 4.5h12M2 8h12M2 11.5h12" />
-          </svg>
-        </button>
-        <button class="btn btn--icon" type="button" data-next aria-label="Next slide">
-          <svg viewBox="0 0 16 16" aria-hidden="true">
-            <path d="M6 3l5 5-5 5" />
-          </svg>
-        </button>
+        <button class="btn btn--icon" type="button" data-prev aria-label="Previous slide" disabled><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" /></svg></button>
+        <button class="btn btn--icon" type="button" data-overview-toggle aria-label="Open slide overview" aria-expanded="false" aria-controls="slide-overview"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4.5h12M2 8h12M2 11.5h12" /></svg></button>
+        <button class="btn btn--icon" type="button" data-next aria-label="Next slide"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" /></svg></button>
       </div>
     </footer>
 
-    <!-- Slide overview drawer -->
     <div class="overview-scrim" data-overview-scrim hidden></div>
-    <aside
-      id="slide-overview"
-      class="overview"
-      data-overview
-      aria-label="Slide overview"
-      aria-hidden="true"
-    >
-      <div class="overview__handle-row">
-        <button
-          class="overview__handle"
-          type="button"
-          data-overview-toggle
-          aria-label="Toggle slide overview"
-        >
-          <span class="overview__grip" aria-hidden="true"></span>
-        </button>
-      </div>
-      <div class="overview__header">
-        <span class="overview__title">Slides</span>
-        <span class="overview__meta">
-          <span data-slide-current>01</span>
-          <span aria-hidden="true"> / </span>
-          <span data-slide-total>00</span>
-        </span>
-      </div>
+    <aside id="slide-overview" class="overview" data-overview aria-label="Slide overview" aria-hidden="true">
+      <div class="overview__handle-row"><button class="overview__handle" type="button" data-overview-toggle aria-label="Toggle slide overview"><span class="overview__grip" aria-hidden="true"></span></button></div>
+      <div class="overview__header"><span class="overview__title">Slides</span><span class="overview__meta"><span data-slide-current>01</span><span aria-hidden="true"> / </span><span data-slide-total>00</span></span></div>
       <div class="overview__track" data-overview-track role="list"></div>
     </aside>
 
     <script src="js/presentation.js"></script>
+    <script src="js/deck.js"></script>
   </body>
 </html>

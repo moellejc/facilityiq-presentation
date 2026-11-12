@@ -1,7 +1,12 @@
 /**
- * Typography loads
+ * Typography — self-hosted (no external CDN).
  * SpaceX uses D-DIN; we approximate with Barlow Condensed + Barlow
  * and keep D-DIN in the font stack for local installs.
  */
-
-@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap");
+@font-face { font-family: "Barlow Condensed"; font-weight: 600; font-display: swap; src: url("../assets/fonts/BarlowCondensed-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "Barlow Condensed"; font-weight: 700; font-display: swap; src: url("../assets/fonts/BarlowCondensed-Bold.ttf") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 400; font-display: swap; src: url("../assets/fonts/Barlow-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 500; font-display: swap; src: url("../assets/fonts/Barlow-Medium.ttf") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 600; font-display: swap; src: url("../assets/fonts/Barlow-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "Barlow"; font-weight: 700; font-display: swap; src: url("../assets/fonts/Barlow-Bold.ttf") format("truetype"); }
+@font-face { font-family: "Roboto Mono"; font-weight: 100 700; font-display: swap; src: url("../assets/fonts/RobotoMono-VariableFont_wght.ttf") format("truetype"); }
