@@ -131,6 +131,9 @@
 .tool--senior .tool__l { top: 60px; }
 .tool--senior .tool__l small { display: block; font: 500 15px/1.3 var(--fiq-font-mono); color: var(--bad); letter-spacing: .06em; text-transform: uppercase; }
 .tool--eng .tool__l { top: -132px; left: -70px; width: 140px; }
+.tool--solo .tool__l small { display: block; margin-top: 3px; font: 500 14px/1.3 var(--fiq-font-mono); color: var(--fiq-white-dim); letter-spacing: .06em; text-transform: uppercase; }
+.slide.is-active .ln--dot { animation: dash-dot 0.9s linear infinite; }
+@keyframes dash-dot { to { stroke-dashoffset: -8.5; } }
 .eng { position: absolute; left: 0; top: 0; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: var(--fiq-white); box-shadow: 0 0 0 6px rgba(240,240,250,.15), 0 0 26px rgba(255,255,255,.7);
   offset-path: path("M 480.4 464.3 L 209.6 425.7 L 480.4 464.3 L 493.4 440.1 L 386.6 319.9 L 493.4 440.1 L 546.6 440.1 L 653.4 319.9 L 546.6 440.1 L 559.6 464.5 L 840.4 425.5 L 559.6 464.5 L 520 510 L 520 646 L 520 510"); offset-rotate: 0deg; offset-distance: 0%; }
 .slide.is-active .eng { animation: eng-bounce 14s linear infinite; }
@@ -192,11 +195,11 @@
 .slide.is-active .auto-step:nth-child(3) { animation: auto-3 12s linear infinite; }
 .slide.is-active .auto-step:nth-child(4) { animation: auto-4 12s linear infinite; }
 .slide.is-active .auto-step:nth-child(5) { animation: auto-5 12s linear infinite; }
-@keyframes auto-1 { 0%, 40% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 41%, 96% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
-@keyframes auto-2 { 0%, 48% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 49%, 96% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
-@keyframes auto-3 { 0%, 57% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 58%, 96% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
-@keyframes auto-4 { 0%, 67% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 68%, 96% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
-@keyframes auto-5 { 0%, 76% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 77%, 96% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
+@keyframes auto-1 { 0%, 54% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 55%, 97% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
+@keyframes auto-2 { 0%, 56% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 57%, 97% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
+@keyframes auto-3 { 0%, 59% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 60%, 97% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
+@keyframes auto-4 { 0%, 61% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 62%, 97% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
+@keyframes auto-5 { 0%, 64% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } 65%, 97% { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); } 100% { --pip: rgba(240,240,250,.28); border-color: rgba(240,240,250,.35); color: var(--fiq-white-muted); background: #07070b; } }
 .fail { left: 560px; top: 392px; width: 320px; height: 72px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; }
 .st--above .st__l { top: auto; bottom: 48px; }
 .fail code { font: 600 18px/1.2 var(--fiq-font-mono); color: var(--bad); }
@@ -296,7 +299,7 @@ body.show-notes .notes-panel { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
   .slide.is-active .eng, .slide.is-active .f-pkt, .slide.is-active .fpkt, .slide.is-active .t-orbit .pkt,
-  .slide.is-active .chip, .slide.is-active .gap, .slide.is-active .ln--flow, .slide.is-active .gates4 i,
+  .slide.is-active .chip, .slide.is-active .gap, .slide.is-active .ln--flow, .slide.is-active .ln--dot, .slide.is-active .gates4 i,
   .slide.is-active .demo__dot, .slide.is-active .req, .slide.is-active .r-req b,
   .slide.is-active .auto-step { animation: none !important; }
   .auto-step { --pip: var(--ok); border-color: var(--ok); color: #fff; background: rgba(61,220,151,.16); }
